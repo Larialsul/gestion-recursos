@@ -1,0 +1,28 @@
+:root{
+--bg:#111827;
+--panel:#1f2937;
+--panel2:#273549;
+--text:#f8fafc;
+--accent:#3b82f6;
+--ok:#22c55e;
+--border:#374151;
+}
+.resource {
+    background:#2c2c2c;
+    border-left:5px solid #4caf50;
+    border-radius:10px;
+    padding:12px;
+    margin:8px 0;
+}
+
+.resource h3{
+    margin:0;
+}
+
+.balance-positive{
+    color:#66ff66;
+}
+
+.balance-negative{
+    color:#ff6666;
+}

@@ -1,0 +1,23 @@
+SCP BASE MANAGER - MIGRACIÓN A SUPABASE
+
+ARCHIVOS NUEVOS
+- supabase-setup.sql: ejecutar en Supabase SQL Editor. Incluye los datos actuales de data/base.js como estado inicial.
+- js/config.js: completar URL + clave pública (anon/publishable). js/config.example.js es una plantilla de referencia.
+- js/supabase-sync.js: conexión, guardado y sondeo de cambios compartidos.
+
+PASOS
+1. En Supabase abre SQL Editor > New query.
+2. Abre supabase-setup.sql, cambia MI-CODIGO-SEGURO por el código que compartirás y ejecuta el script completo. El INSERT no sobrescribe datos si ya existe la fila id=1.
+3. En Supabase > Project Settings > API (o Data API), copia Project URL y la clave publishable/anon. No uses service_role ni secret key.
+4. Abre js/config.js y rellena url y anonKey.
+5. Sube todo el contenido del ZIP al repositorio GitHub, incluyendo js/config.js.
+6. Espera a que GitHub Pages despliegue y abre la URL. Introduce el código compartido.
+7. Comparte URL y código con los demás jugadores.
+
+IMPORTANTE
+- El acceso se valida en funciones SQL y la tabla no tiene permisos directos para anon.
+- Todos los participantes comparten los mismos permisos; el código no distingue jugadores.
+- La aplicación sincroniza consultando la base cada 3,5 segundos. Los cambios se guardan automáticamente tras una pausa breve.
+- Si dos jugadores editan a la vez, la revisión evita sobrescribir silenciosamente los cambios: aparecerá un aviso de conflicto y será necesario recargar. Para una edición simultánea más avanzada habría que guardar cambios por entidad/campo.
+- La tabla inicial se crea con los datos del ZIP. No ejecutes el SQL de nuevo para restaurar datos, porque el estado existente se conserva.
+- Conserva el ZIP original como copia de seguridad.

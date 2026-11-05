@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SCP Base Manager</title>
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="sidebar">
+<h2>SCP Base</h2>
+<button class="tab active" data-tab="base">🏠 Base</button>
+<button class="tab" data-tab="personal">👥 Personajes</button>
+<button class="tab" data-tab="rooms">🏢 Salas</button>
+<button class="tab" data-tab="resources-manager">📊 Recursos</button>
+<button class="tab" data-tab="inv">📦 Inventario</button>
+<button class="tab" data-tab="fac">🤝 Facciones</button>
+<button id="save-all" class="primary-button sidebar-save">💾 Guardar todo</button>
+<span id="global-save-status" class="global-save-status">Sin cambios pendientes</span>
+</div>
+<div class="content">
+<header><h1>SCP Base Manager</h1></header>
+
+<section id="base" class="page active">
+<div class="section-header">
+    <div><h2>Estado de la Base</h2><p class="section-description">Estado actual y recursos de la instalación.</p></div>
+</div>
+<div class="grid">
+<div class="card"><h3>Recursos</h3><div id="resources"></div></div>
+<div class="card"><h3>Producción</h3><div id="production"></div></div>
+<div class="card"><h3>Consumo</h3><div id="consumption"></div></div>
+<div class="card"><h3>Salas Activas</h3><div id="active-rooms-summary"></div></div>
+<div class="card"><h3>Personajes</h3><div id="active-characters-summary"></div></div>
+<div class="card"><h3>Facciones</h3><div id="factions-summary"></div></div>
+</div>
+</section>
+
+<section id="personal" class="page">
+    <div class="section-header">
+        <div>
+            <h2>Personajes</h2>
+            <p class="section-description">Gestiona el personal de la base y su contribución a la producción.</p>
+        </div>
+        <button id="add-character" class="primary-button">＋ Añadir personaje</button>
+    </div>
+
+    <div class="card characters-card">
+        <div class="characters-header">
+            <span>Nombre</span>
+            <span>Ocupación</span>
+            <span>Descripción</span>
+            <span>Estado</span>
+            <span>Gasto</span>
+            <span>Producción</span>
+            <span>Cantidad</span>
+            <span></span>
+        </div>
+        <div id="characters-list"></div>
+    </div>
+</section>
+<section id="rooms" class="page">
+
+    <div class="section-header">
+        <div>
+            <h2>Salas de la Base</h2>
+            <p class="section-description">
+                Gestiona las instalaciones y su funcionamiento.
+            </p>
+        </div>
+
+        <button id="add-room" class="primary-button">
+            ＋ Añadir sala
+        </button>
+    </div>
+
+    <div class="card rooms-card">
+
+        <div class="rooms-header">
+            <span>Nombre</span>
+            <span>Descripción</span>
+            <span>Estado</span>
+            <span>Producción</span>
+            <span>Cantidad / día</span>
+            <span>Gasto</span>
+            <span>Consumo / día</span>
+            <span></span>
+        </div>
+
+        <div id="rooms-list"></div>
+
+    </div>
+
+</section>
+<section id="exp" class="page"><h2>Expediciones</h2><p>Próximamente...</p></section>
+<section id="resources-manager" class="page">
+    <div class="section-header">
+        <div>
+            <h2>Gestión de Recursos</h2>
+            <p class="section-description">Modifica manualmente las cantidades disponibles de la base. La producción y el consumo se calculan aparte.</p>
+        </div>
+    </div>
+    <div class="resource-management-grid" id="resource-management-list"></div>
+</section>
+
+<section id="inv" class="page">
+    <div class="section-header">
+        <div>
+            <h2>Inventario</h2>
+            <p class="section-description">Registra aquí los objetos, suministros y materiales disponibles en la base.</p>
+        </div>
+    </div>
+
+    <div class="card inventory-card">
+        <h3>Contenido del inventario</h3>
+        <textarea id="inventory-text" class="inventory-textarea" placeholder="Escribe aquí el inventario de la base...
+
+Ejemplo:
+• Munición: 120
+• Botiquines: 8
+• Kits de reparación: 3
+• Objetos anómalos: 2"></textarea>
+        <div class="inventory-footer">
+            <span id="inventory-status">Los cambios se guardan con «Guardar todo».</span>
+        </div>
+    </div>
+</section>
+<section id="fac" class="page">
+    <div class="section-header">
+        <div><h2>Facciones</h2><p class="section-description">Gestiona las relaciones y la información de las facciones conocidas.</p></div>
+        <button id="add-faction" class="primary-button">＋ Añadir facción</button>
+    </div>
+    <div class="card factions-card">
+        <div class="factions-header">
+            <span>Nombre</span><span>Líder</span><span>Relación</span><span>Descripción</span><span>Notas de jugadores</span><span></span>
+        </div>
+        <div id="factions-list"></div>
+    </div>
+</section>
+
+</div>
+<script src="data/base.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
